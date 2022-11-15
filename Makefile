@@ -1,10 +1,9 @@
-# This makefile is used to make it easier to get the project set up
-# to be ready for development work in the local sandbox.
-# example: "make setup"
+# This makefile is helps to automate some of the steps needed
+# to build, test, lint-check, and publish the project.
 
-setup: deps dev_deps install_project
+setup: upgrade_pip deps dev_deps install_project
 
-all: upgrade_pip setup test-unit lint
+all: setup test-unit lint
 
 ci: setup test-unit lint
 
@@ -17,6 +16,9 @@ deps:
 dev_deps:
 	python -m pip install -r requirements-dev.txt
 
+publish_deps:
+	python -m pip install setuptools wheel twine build
+
 install_project:
 	python -m pip install -e .
 
@@ -25,3 +27,8 @@ test-unit:
 
 lint:
 	./pylint.sh
+
+build_dist:
+	rm -fr dist
+	python -m build --outdir dist
+	twine check --strict dist/*
