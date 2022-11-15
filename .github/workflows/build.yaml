@@ -59,31 +59,31 @@ jobs:
         python-version: ['3.8']
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Setup node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 14
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install semantic-release 
-      run: |
-        npm install -g semantic-release
-        npm install -g @semantic-release/changelog
-        npm install -g @semantic-release/exec
-        npm install -g @semantic-release/git
-        npm install -g @semantic-release/github
-        npm install -g @semantic-release/commit-analyzer
-        pip install --user bumpversion
+      - name: Install semantic-release 
+        run: |
+          npm install -g semantic-release
+          npm install -g @semantic-release/changelog
+          npm install -g @semantic-release/exec
+          npm install -g @semantic-release/git
+          npm install -g @semantic-release/github
+          npm install -g @semantic-release/commit-analyzer
+          pip install --user bumpversion
 
-    - name: Create & Tag Release
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: npx semantic-release
+      - name: Create & Tag Release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release
 
