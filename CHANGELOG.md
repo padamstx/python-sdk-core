@@ -1,3 +1,10 @@
+# [3.17.0](https://github.com/padamstx/python-sdk-core/compare/v3.16.0...v3.17.0) (2022-11-15)
+
+
+### Features
+
+* introduce build workflow ([0753c23](https://github.com/padamstx/python-sdk-core/commit/0753c23e8ed82c4e72fd1116ec69d184a60dab53))
+
 # [3.16.0](https://github.com/IBM/python-sdk-core/compare/v3.15.3...v3.16.0) (2022-08-01)
 
 
